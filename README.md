@@ -3,14 +3,15 @@
 Engenheiro de dados. Passo a maior parte do tempo ligando dois mundos: os
 sistemas que a empresa já roda no dia a dia e a plataforma analítica que ela
 ainda quer ter. Na prática, isso é ingestão, orquestração, modelagem em camadas
-e governança — do banco de origem até o mart que alguém abre no BI.
+e governança — do banco de origem até o mart que alguém abre numa ferramenta
+de BI.
 
 O que eu levo a sério é o porquê de cada escolha. Uma decisão de arquitetura só
 vale se aguenta a segunda pergunta, e saber quando *não* usar uma ferramenta
 costuma pesar mais do que conhecer todas.
 
-<img src="stack.png" width="520"
-  alt="Orquestração: Airflow · Transformação: dbt, SQL, Python · Processamento: pandas, PySpark · Dados: SQL Server, MySQL, Parquet, DuckDB · Qualidade e governança: dbt tests, Great Expectations, Data Masking · Infra: Docker Compose, GitHub Actions">
+<img src="stack.svg" width="560"
+  alt="Orquestração: Apache Airflow · Transformação: dbt, Python · Processamento: pandas, PySpark · Dados: S3/MinIO, Parquet, DuckDB, SQL Server, MySQL · Qualidade e governança: dbt tests, Great Expectations, Dynamic Data Masking · Infra: Docker Compose, GitHub Actions">
 
 ---
 
@@ -22,18 +23,18 @@ Central). Roda inteiro na máquina local — sem nuvem, sem cartão, sem serviç
 pago. Um `docker compose up` e o pipeline todo sobe.
 
 ```text
-fontes             ingestão           Bronze            Silver        Gold
-───────────────    ───────────────    ──────────────    ──────────    ────
-SQL Server         Airflow            Parquet / MinIO   dbt-duckdb    marts por
-MySQL · API BCB    watermark, 4 DAGs  particionado      18 staging    domínio
+fontes             ingestão           Bronze             Silver        Gold
+───────────────    ───────────────    ───────────────    ──────────    ────
+SQL Server         Airflow            MinIO / Parquet    dbt-duckdb    marts por
+MySQL · API BCB    watermark, 4 DAGs  particionado       18 staging    domínio
 ```
 
-O que costuma render conversa numa entrevista:
+Alguns pontos que valem destaque:
 
-- **A arquitetura medallion está montada das duas pontas** — Airflow puxando as
-  fontes de forma incremental por watermark, Parquet particionado no MinIO como
-  Bronze, dbt sobre DuckDB montando os 18 modelos de staging e os marts por
-  domínio, e Great Expectations checando a Bronze ainda crua.
+- **É de ponta a ponta, não um trecho** — da extração incremental no Airflow até
+  os marts, com o dbt lendo o Parquet direto do MinIO via `httpfs`: não existe
+  etapa de carga no meio, e ainda assim o comportamento é o de um warehouse
+  colunar.
 - **O SQL legado não é enfeite** — uma view que dependia de XQuery e XML nativos
   do SQL Server foi portada para `regexp_extract` no dbt e bate 1:1 com a
   original, nas 19.972 linhas. Um `PIVOT` antigo virou formato long/tidy em vez
@@ -45,8 +46,9 @@ O que costuma render conversa numa entrevista:
 - **O benchmark é honesto** — Pandas contra PySpark no mesmo dado. O Pandas
   ganhou por ~3,3× em ~6 milhões de linhas, e o repositório explica por que esse
   era o resultado esperado nesse volume.
-- **O tuning tem número dos dois lados** — reescrever um predicado não-sargável
-  para range com índice de apoio derrubou as leituras lógicas de 686 para 49.
+- **O tuning tem número de antes e depois** — reescrever um predicado
+  não-sargável para range com índice de apoio derrubou as leituras lógicas de
+  686 para 49.
 
 ---
 
@@ -66,5 +68,7 @@ dependência a cada push.
 
 ### Contato
 
+Aberto a conversas sobre posições de Engenheiro de Dados (Pleno/Sênior).
+
 - LinkedIn — [linkedin.com/in/lucas-santos-696061186](https://www.linkedin.com/in/lucas-santos-696061186/)
-- Email — lucasss.sillva@hotmail.com
+- Email — [lucasss.sillva@hotmail.com](mailto:lucasss.sillva@hotmail.com)
