@@ -1,12 +1,25 @@
 ## Lucas Santos
 
-**Engenheiro de Dados** — levo sistemas transacionais legados para uma
-plataforma analítica moderna: ingestão, orquestração, modelagem em camadas
-e governança.
+Engenheiro de dados. Passo a maior parte do tempo ligando dois mundos: os
+sistemas que a empresa já roda no dia a dia e a plataforma analítica que ela
+ainda quer ter. Na prática, isso é ingestão, orquestração, modelagem em camadas
+e governança — do banco de origem até o mart que alguém abre no BI.
 
-Trabalho com trade-off explícito. Saber *quando não* usar uma ferramenta conta
-tanto quanto saber usá-la — e toda decisão de arquitetura merece um porquê que
-sobrevive a uma pergunta de acompanhamento.
+O que eu levo a sério é o porquê de cada escolha. Uma decisão de arquitetura só
+vale se aguenta a segunda pergunta, e saber quando *não* usar uma ferramenta
+costuma pesar mais do que conhecer todas.
+
+<img src="stack.png" width="520"
+  alt="Orquestração: Airflow · Transformação: dbt, SQL, Python · Processamento: pandas, PySpark · Dados: SQL Server, MySQL, Parquet, DuckDB · Qualidade e governança: dbt tests, Great Expectations, Data Masking · Infra: Docker Compose, GitHub Actions">
+
+---
+
+### Em destaque — [legacy-to-lakehouse](https://github.com/lsantos-data/legacy-to-lakehouse)
+
+Uma migração de ponta a ponta: o AdventureWorks, um backoffice em SQL Server,
+sendo modernizado e integrado com dados de e-commerce (Olist) e câmbio (Banco
+Central). Roda inteiro na máquina local — sem nuvem, sem cartão, sem serviço
+pago. Um `docker compose up` e o pipeline todo sobe.
 
 ```text
 fontes             ingestão           Bronze            Silver        Gold
@@ -15,47 +28,43 @@ SQL Server         Airflow            Parquet / MinIO   dbt-duckdb    marts por
 MySQL · API BCB    watermark, 4 DAGs  particionado      18 staging    domínio
 ```
 
----
+O que costuma render conversa numa entrevista:
 
-### Em destaque · [legacy-to-lakehouse](https://github.com/lsantos-data/legacy-to-lakehouse)
-
-Migração de ponta a ponta de um backoffice em SQL Server (AdventureWorks) para
-um lakehouse local — integrado com e-commerce (Olist) e câmbio (Banco Central).
-100% local, custo zero, sobe com `docker compose up`.
-
-|  |  |
-|---|---|
-| **Arquitetura medallion completa** | Airflow com extração incremental por watermark → MinIO/Parquet → dbt-duckdb (18 staging + marts por domínio) → Great Expectations sobre a Bronze crua |
-| **SQL legado de verdade** | view com XQuery/XML nativo do SQL Server portada para `regexp_extract` no dbt, validada 1:1 (19.972 linhas); `PIVOT` reescrito para long/tidy em vez de reproduzir o anti-padrão |
-| **Governança no motor** | Dynamic Data Masking real no SQL Server, reaplicado na Gold porque a máscara não viaja com a extração |
-| **Benchmark honesto** | Pandas × PySpark no mesmo dado — Pandas ~3,3× mais rápido em ~6M linhas, com a explicação de por que era o esperado |
-| **Tuning medido** | predicado não-sargável → range + índice de apoio: 686 → 49 leituras lógicas |
-
----
-
-### Stack
-
-**Orquestração** Apache Airflow &nbsp;·&nbsp; **Transformação** dbt · SQL · Python
-&nbsp;·&nbsp; **Processamento** pandas · PySpark &nbsp;·&nbsp; **Armazenamento**
-S3/Parquet · DuckDB · SQL Server · MySQL &nbsp;·&nbsp; **Qualidade e governança**
-dbt tests · Great Expectations · Dynamic Data Masking &nbsp;·&nbsp; **Infra**
-Docker Compose · GitHub Actions
+- **A arquitetura medallion está montada das duas pontas** — Airflow puxando as
+  fontes de forma incremental por watermark, Parquet particionado no MinIO como
+  Bronze, dbt sobre DuckDB montando os 18 modelos de staging e os marts por
+  domínio, e Great Expectations checando a Bronze ainda crua.
+- **O SQL legado não é enfeite** — uma view que dependia de XQuery e XML nativos
+  do SQL Server foi portada para `regexp_extract` no dbt e bate 1:1 com a
+  original, nas 19.972 linhas. Um `PIVOT` antigo virou formato long/tidy em vez
+  de reproduzir o anti-padrão.
+- **A governança foi testada no motor** — Dynamic Data Masking de verdade no SQL
+  Server: um login sem permissão vê `K*** S***` onde o `sa` vê `Ken Sánchez`. E
+  a máscara é reaplicada na camada Gold, porque ela não viaja junto com a
+  extração.
+- **O benchmark é honesto** — Pandas contra PySpark no mesmo dado. O Pandas
+  ganhou por ~3,3× em ~6 milhões de linhas, e o repositório explica por que esse
+  era o resultado esperado nesse volume.
+- **O tuning tem número dos dois lados** — reescrever um predicado não-sargável
+  para range com índice de apoio derrubou as leituras lógicas de 686 para 49.
 
 ---
 
 ### Como eu penso sobre engenharia de dados
 
-- **Trade-off explícito supera "boa prática" genérica** — cada decisão de
-  arquitetura tem um porquê testado contra o ambiente real e documentado,
-  inclusive as que não deram certo de primeira.
-- **Bronze fica crua, sempre** — transformação e mascaramento são propriedade
-  de cada ponto de acesso ao dado, não do dado armazenado.
-- **O pipeline não está pronto até um clone limpo rodar** — CI a cada push:
-  `dbt parse`, lint de SQL e Python, scan de segredo, audit de dependência.
+Toda decisão de arquitetura tem um porquê que foi testado contra o ambiente real
+e escrito em algum lugar — inclusive as que falharam antes de dar certo.
+
+A camada Bronze fica crua. Transformação e mascaramento são responsabilidade de
+cada ponto de acesso ao dado, não do dado que está guardado.
+
+E o pipeline não está pronto até um clone limpo rodar. É por isso que o CI roda
+`dbt parse`, lint de SQL e Python, varredura de segredo e auditoria de
+dependência a cada push.
 
 ---
 
 ### Contato
 
-- LinkedIn: [linkedin.com/in/lucas-santos-696061186](https://www.linkedin.com/in/lucas-santos-696061186/)
-- Email: lucasss.sillva@hotmail.com
+- LinkedIn — [linkedin.com/in/lucas-santos-696061186](https://www.linkedin.com/in/lucas-santos-696061186/)
+- Email — lucasss.sillva@hotmail.com
