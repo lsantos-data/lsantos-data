@@ -60,5 +60,5 @@ um lakehouse local — integrado com e-commerce (Olist) e câmbio (Banco Central
 
 ### Contato
 
-- LinkedIn: <adicione o link do seu perfil>
-- Email: <adicione um email de contato>
+- LinkedIn: [linkedin.com/in/lucas-santos-696061186](https://www.linkedin.com/in/lucas-santos-696061186/)
+- Email: lucasss.sillva@hotmail.com
