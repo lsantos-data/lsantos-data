@@ -1,0 +1,74 @@
+<svg width="1200" height="280" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-light desc-light">
+  <title id="title-light">Lucas Santos — Senior Data Analyst &amp; Data Engineer</title>
+  <desc id="desc-light">Terminal digitando código PySpark real do pipeline de Finance, seguido do nome, cargo e tagline. Abaixo, uma faixa Bronze, Silver, Gold com pacotes de dados fluindo.</desc>
+  <style>
+    text { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+    .sans { font-family: -apple-system, "Segoe UI", Inter, Arial, sans-serif; }
+    .line { clip-path: inset(0 100% 0 0); animation-fill-mode: forwards; animation-timing-function: steps(40, end); }
+    .l1 { animation: reveal1 .8s .3s forwards; }
+    .l2 { animation: reveal2 .6s 1.2s forwards; }
+    .l3 { animation: reveal3 .7s 1.9s forwards; }
+    @keyframes reveal1 { to { clip-path: inset(0 0 0 0); } }
+    @keyframes reveal2 { to { clip-path: inset(0 0 0 0); } }
+    @keyframes reveal3 { to { clip-path: inset(0 0 0 0); } }
+    .cursor { animation: blink 1s step-end 2.6s infinite; }
+    @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    .fade { opacity: 0; transform: translateY(10px); animation-fill-mode: forwards; animation-timing-function: ease; }
+    .f1 { animation: fadeUp .6s 2.6s forwards; }
+    .f2 { animation: fadeUp .6s 2.9s forwards; }
+    .f3 { animation: fadeUp .6s 3.15s forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .packet { animation: flow 3s linear infinite; }
+    .p2 { animation-delay: 1s; }
+    .p3 { animation-delay: 2s; }
+    @keyframes flow { from { transform: translateX(0); } to { transform: translateX(1000px); } }
+    @media (prefers-reduced-motion: reduce) {
+      .line { clip-path: inset(0 0 0 0) !important; animation: none !important; }
+      .cursor { animation: none !important; opacity: 0 !important; }
+      .fade { animation: none !important; opacity: 1 !important; transform: none !important; }
+      .packet { animation: none !important; opacity: 0 !important; }
+    }
+  </style>
+
+  <rect width="1200" height="280" fill="#f7f9fc"/>
+
+  <rect x="40" y="24" width="560" height="180" rx="10" fill="#ffffff" stroke="#dfe4ee" stroke-width="1"/>
+  <rect x="40" y="24" width="560" height="28" rx="10" fill="#eef1f8"/>
+  <rect x="40" y="42" width="560" height="10" fill="#eef1f8"/>
+  <circle cx="58" cy="38" r="5" fill="#c7cede"/>
+  <circle cx="76" cy="38" r="5" fill="#c7cede"/>
+  <circle cx="94" cy="38" r="5" fill="#c7cede"/>
+
+  <g class="line l1">
+    <text x="64" y="86" font-size="15" fill="#5b6478">df<tspan fill="#0077b6">.filter</tspan>(col(<tspan fill="#b8860b">"data"</tspan>) &gt;= inicio)</text>
+  </g>
+  <g class="line l2">
+    <text x="64" y="112" font-size="15" fill="#5b6478">  <tspan fill="#0077b6">.select</tspan>(*colunas_necessarias)</text>
+  </g>
+  <g class="line l3">
+    <text x="64" y="138" font-size="15" fill="#5b6478">  <tspan fill="#0077b6">.repartition</tspan>(<tspan fill="#b8860b">"data"</tspan>, <tspan fill="#b8860b">"diretoria"</tspan>)</text>
+  </g>
+  <rect class="cursor" x="330" y="126" width="9" height="16" fill="#0077b6"/>
+
+  <g class="fade f1">
+    <text x="640" y="98" font-size="38" font-weight="700" fill="#0f172a" class="sans">Lucas Santos</text>
+  </g>
+  <g class="fade f2">
+    <text x="640" y="132" font-size="19" fill="#0077b6" class="sans">Senior Data Analyst &amp; Data Engineer</text>
+  </g>
+  <g class="fade f3">
+    <text x="640" y="160" font-size="15" fill="#5b6478" class="sans">Payments · Fraud Prevention · Lakehouse</text>
+  </g>
+
+  <line x1="100" y1="250" x2="1100" y2="250" stroke="#dfe4ee" stroke-width="2"/>
+  <circle cx="100" cy="250" r="8" fill="none" stroke="#9a5b1e" stroke-width="2"/>
+  <text x="100" y="276" font-size="13" fill="#9a5b1e" text-anchor="middle" class="sans">BRONZE</text>
+  <circle cx="600" cy="250" r="8" fill="none" stroke="#6b7280" stroke-width="2"/>
+  <text x="600" y="276" font-size="13" fill="#6b7280" text-anchor="middle" class="sans">SILVER</text>
+  <circle cx="1100" cy="250" r="8" fill="none" stroke="#b8860b" stroke-width="2"/>
+  <text x="1100" y="276" font-size="13" fill="#b8860b" text-anchor="middle" class="sans">GOLD</text>
+
+  <circle class="packet p1" cx="100" cy="250" r="4" fill="#9a5b1e"/>
+  <circle class="packet p2" cx="100" cy="250" r="4" fill="#6b7280"/>
+  <circle class="packet p3" cx="100" cy="250" r="4" fill="#b8860b"/>
+</svg>
