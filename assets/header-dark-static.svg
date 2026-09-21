@@ -1,0 +1,33 @@
+<svg width="1200" height="280" viewBox="0 0 1200 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title-dark-s desc-dark-s">
+  <title id="title-dark-s">Lucas Santos — Senior Data Analyst &amp; Data Engineer</title>
+  <desc id="desc-dark-s">Terminal com código PySpark real do pipeline de Finance, nome, cargo e tagline. Abaixo, uma faixa Bronze, Silver, Gold. Versão estática (sem movimento).</desc>
+  <style>
+    text { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+    .sans { font-family: -apple-system, "Segoe UI", Inter, Arial, sans-serif; }
+  </style>
+
+  <rect width="1200" height="280" fill="#0a0e27"/>
+
+  <rect x="40" y="24" width="560" height="180" rx="10" fill="#111737" stroke="#1c2444" stroke-width="1"/>
+  <rect x="40" y="24" width="560" height="28" rx="10" fill="#161d40"/>
+  <rect x="40" y="42" width="560" height="10" fill="#161d40"/>
+  <circle cx="58" cy="38" r="5" fill="#3a4272"/>
+  <circle cx="76" cy="38" r="5" fill="#3a4272"/>
+  <circle cx="94" cy="38" r="5" fill="#3a4272"/>
+
+  <text x="64" y="86" font-size="15" fill="#8b95b0">df<tspan fill="#00d4ff">.filter</tspan>(col(<tspan fill="#ffd166">"data"</tspan>) &gt;= inicio)</text>
+  <text x="64" y="112" font-size="15" fill="#8b95b0">  <tspan fill="#00d4ff">.select</tspan>(*colunas_necessarias)</text>
+  <text x="64" y="138" font-size="15" fill="#8b95b0">  <tspan fill="#00d4ff">.repartition</tspan>(<tspan fill="#ffd166">"data"</tspan>, <tspan fill="#ffd166">"diretoria"</tspan>)</text>
+
+  <text x="640" y="98" font-size="38" font-weight="700" fill="#e6edf7" class="sans">Lucas Santos</text>
+  <text x="640" y="132" font-size="19" fill="#00d4ff" class="sans">Senior Data Analyst &amp; Data Engineer</text>
+  <text x="640" y="160" font-size="15" fill="#8b95b0" class="sans">Payments · Fraud Prevention · Lakehouse</text>
+
+  <line x1="100" y1="250" x2="1100" y2="250" stroke="#1c2444" stroke-width="2"/>
+  <circle cx="100" cy="250" r="8" fill="none" stroke="#cd7f32" stroke-width="2"/>
+  <text x="100" y="276" font-size="13" fill="#cd7f32" text-anchor="middle" class="sans">BRONZE</text>
+  <circle cx="600" cy="250" r="8" fill="none" stroke="#c0c8d8" stroke-width="2"/>
+  <text x="600" y="276" font-size="13" fill="#c0c8d8" text-anchor="middle" class="sans">SILVER</text>
+  <circle cx="1100" cy="250" r="8" fill="none" stroke="#ffd166" stroke-width="2"/>
+  <text x="1100" y="276" font-size="13" fill="#ffd166" text-anchor="middle" class="sans">GOLD</text>
+</svg>

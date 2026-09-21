@@ -1,0 +1,63 @@
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="rtitle-light-s rdesc-light-s">
+  <title id="rtitle-light-s">Radar técnico</title>
+  <desc id="rdesc-light-s">Radar com três anéis. Anel interno (produção): SQL, PySpark/Spark, Databricks, Python/pandas. Anel médio (uso com confiança): AWS S3, Delta Lake, Airflow, Power BI. Anel externo (estudando agora): dbt, DuckDB, MinIO, Docker. Versão estática (sem movimento).</desc>
+  <style>
+    .sans { font-family: -apple-system, "Segoe UI", Inter, Arial, sans-serif; }
+    .ring { fill: none; stroke: #dfe4ee; stroke-width: 1; }
+    .spoke { stroke: #dfe4ee; stroke-width: 1; }
+    .label { fill: #5b6478; font-size: 15px; }
+    .dot { fill: #5b6478; }
+  </style>
+
+  <rect width="640" height="640" fill="#f7f9fc"/>
+
+  <circle class="ring" cx="320" cy="320" r="80"/>
+  <circle class="ring" cx="320" cy="320" r="160"/>
+  <circle class="ring" cx="320" cy="320" r="240"/>
+
+  <line class="spoke" x1="320" y1="80" x2="320" y2="560"/>
+  <line class="spoke" x1="80" y1="320" x2="560" y2="320"/>
+  <line class="spoke" x1="150.3" y1="150.3" x2="489.7" y2="489.7"/>
+  <line class="spoke" x1="489.7" y1="150.3" x2="150.3" y2="489.7"/>
+
+  <!-- Ring 1 — produção -->
+  <circle class="dot" cx="320" cy="240" r="6"/>
+  <text class="label sans" x="320" y="220" text-anchor="middle">SQL</text>
+
+  <circle class="dot" cx="400" cy="320" r="6"/>
+  <text class="label sans" x="416" y="325" text-anchor="start">PySpark/Spark</text>
+
+  <circle class="dot" cx="320" cy="400" r="6"/>
+  <text class="label sans" x="320" y="424" text-anchor="middle">Databricks</text>
+
+  <circle class="dot" cx="240" cy="320" r="6"/>
+  <text class="label sans" x="224" y="325" text-anchor="end">Python/pandas</text>
+
+  <!-- Ring 2 — confiança -->
+  <circle class="dot" cx="433.1" cy="206.9" r="6"/>
+  <text class="label sans" x="444" y="202" text-anchor="start">AWS S3</text>
+
+  <circle class="dot" cx="433.1" cy="433.1" r="6"/>
+  <text class="label sans" x="444" y="448" text-anchor="start">Delta Lake</text>
+
+  <circle class="dot" cx="206.9" cy="433.1" r="6"/>
+  <text class="label sans" x="196" y="448" text-anchor="end">Airflow</text>
+
+  <circle class="dot" cx="206.9" cy="206.9" r="6"/>
+  <text class="label sans" x="196" y="202" text-anchor="end">Power BI</text>
+
+  <!-- Ring 3 — estudando -->
+  <circle class="dot" cx="320" cy="80" r="6"/>
+  <text class="label sans" x="320" y="62" text-anchor="middle">dbt</text>
+
+  <circle class="dot" cx="560" cy="320" r="6"/>
+  <text class="label sans" x="576" y="325" text-anchor="start">DuckDB</text>
+
+  <circle class="dot" cx="320" cy="560" r="6"/>
+  <text class="label sans" x="320" y="584" text-anchor="middle">MinIO</text>
+
+  <circle class="dot" cx="80" cy="320" r="6"/>
+  <text class="label sans" x="64" y="325" text-anchor="end">Docker</text>
+
+  <text x="320" y="612" text-anchor="middle" class="sans" font-size="12" fill="#8892ab">Anel interno: produção · médio: confiança · externo: estudando</text>
+</svg>

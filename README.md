@@ -1,6 +1,7 @@
 <picture>
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="assets/header-dark-static.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/header-light-static.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg">
   <img src="assets/header-light.svg" alt="Terminal digitando código PySpark real do pipeline de Finance (df.filter, .select, .repartition por data e diretoria), revelando o nome Lucas Santos, o cargo Senior Data Analyst &amp; Data Engineer e a tagline Payments · Fraud Prevention · Lakehouse. Abaixo, uma faixa Bronze → Silver → Gold com pacotes de dados fluindo.">
 </picture>
 
@@ -68,8 +69,9 @@ flowchart LR
 <summary><strong>Tech Radar</strong></summary>
 
 <picture>
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="assets/radar-dark-static.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/radar-light-static.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/radar-dark.svg">
-  <source media="(prefers-color-scheme: light)" srcset="assets/radar-light.svg">
   <img src="assets/radar-light.svg" width="380" alt="Radar técnico com três anéis: anel interno (produção) — SQL, PySpark/Spark, Databricks, Python/pandas; anel médio (uso com confiança) — AWS S3, Delta Lake, Airflow, Power BI; anel externo (estudando agora) — dbt, DuckDB, MinIO, Docker.">
 </picture>
 
