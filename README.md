@@ -1,8 +1,12 @@
 ## Lucas Santos
 
-Engenheiro de dados. Passo a maior parte do tempo ligando dois mundos: os
-sistemas que a empresa já roda no dia a dia e a plataforma analítica que ela
-ainda quer ter. Na prática, isso é ingestão, orquestração, modelagem em camadas
+**Senior Data Analyst & Data Engineer** — Payments & Fraud/Risk Analytics — 7
+anos em tecnologia, 5 focados em Dados. Especialista em Lakehouse
+Architecture, observabilidade e impacto em produção.
+
+**[🌐 Ver portfólio interativo completo →](https://lsantos-data.github.io/lsantos-data/)**
+
+No dia a dia, isso é ingestão, orquestração, modelagem em camadas
 e governança — do banco de origem até o mart que alguém abre numa ferramenta
 de BI.
 
@@ -89,7 +93,8 @@ seguir em frente.
 
 ## Contato
 
-Aberto a conversas sobre posições de Engenheiro de Dados (Pleno/Sênior).
+Aberto a conversas sobre posições de Engenheiro de Dados (Sênior/Staff),
+Fraud Prevention & Risk Analytics, e mentoria em Data Engineering.
 
 - LinkedIn — [linkedin.com/in/lucas-santos-696061186](https://www.linkedin.com/in/lucas-santos-696061186/)
 - Email — [lucasss.sillva@hotmail.com](mailto:lucasss.sillva@hotmail.com)
